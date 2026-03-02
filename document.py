@@ -8,5 +8,11 @@ def get_documents(context_dir: str):
     
     return documents
 
+def curate_context(documents):
+    combined_text = "\n\n--- NEXT DOCUMENT ---\n\n".join(
+        [doc.page_content for doc in documents]
+    )
+    return combined_text
+
 if __name__ == "__main__":
-    get_documents(config.CONTEXT_DIR)
+    print(curate_context(get_documents(config.CONTEXT_DIR)))
