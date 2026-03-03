@@ -1,6 +1,7 @@
 services:
   scraper:
     image: joshuaffds/arp_scraper:latest
+    pull_policy: always
     environment:
       - NUM_PAPERS=${NUM_PAPERS}
       - DELAY=${DELAY}
