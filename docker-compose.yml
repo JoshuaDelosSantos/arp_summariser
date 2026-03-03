@@ -1,0 +1,23 @@
+services:
+  scraper:
+    image: joshuaffds/arp_scraper:latest
+    environment:
+      - NUM_PAPERS=${NUM_PAPERS}
+      - DELAY=${DELAY}
+    volumes:
+      - papers:/app/papers
+
+  summariser:
+    build: .
+    environment:
+      - API_KEY=${API_KEY}
+      - CHAT_MODEL=${CHAT_MODEL}
+      - CONTEXT_DIR=$(CONTEXT_DIR)
+    volumes:
+      - papers:/app/papers
+    depends_on:
+      scraper:
+        condition: service_completed_successfully
+
+volumes:
+  papers:
