@@ -13,7 +13,7 @@ services:
     environment:
       - API_KEY=${API_KEY}
       - CHAT_MODEL=${CHAT_MODEL}
-      - CONTEXT_DIR=$(CONTEXT_DIR)
+      - CONTEXT_DIR=${CONTEXT_DIR}
     volumes:
       - papers:/app/papers
     depends_on:
