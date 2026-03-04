@@ -3,6 +3,8 @@ import config
 import document
 import llm
 
+# TODO: Send auto updates to telegram
+
 def main():
     document_context = document.curate_context(document.get_documents(config.CONTEXT_DIR))
     
